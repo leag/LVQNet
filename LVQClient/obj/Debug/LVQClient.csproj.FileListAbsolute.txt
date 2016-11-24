@@ -1,0 +1,8 @@
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\bin\Debug\LVQClient.exe.config
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\bin\Debug\LVQClient.exe
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\bin\Debug\LVQClient.pdb
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\bin\Debug\LVQLibrary.dll
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\bin\Debug\LVQLibrary.pdb
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\obj\Debug\LVQClient.csprojResolveAssemblyReference.cache
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\obj\Debug\LVQClient.exe
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClient\obj\Debug\LVQClient.pdb

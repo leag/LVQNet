@@ -1,0 +1,6 @@
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQNet\bin\Debug\LVQNet.exe.config
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQNet\bin\Debug\LVQNet.exe
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQNet\bin\Debug\LVQNet.pdb
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQNet\obj\Debug\LVQNet.csprojResolveAssemblyReference.cache
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQNet\obj\Debug\LVQNet.exe
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQNet\obj\Debug\LVQNet.pdb

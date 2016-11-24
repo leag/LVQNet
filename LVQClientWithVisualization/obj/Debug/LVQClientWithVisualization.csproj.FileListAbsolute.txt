@@ -1,0 +1,11 @@
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\bin\Debug\LVQClientWithVisualization.exe.config
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\bin\Debug\LVQClientWithVisualization.exe
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\bin\Debug\LVQClientWithVisualization.pdb
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\obj\Debug\LVQClientWithVisualization.csprojResolveAssemblyReference.cache
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\obj\Debug\LVQClientWithVisualization.Form1.resources
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\obj\Debug\LVQClientWithVisualization.Properties.Resources.resources
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\obj\Debug\LVQClientWithVisualization.csproj.GenerateResource.Cache
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\obj\Debug\LVQClientWithVisualization.exe
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\obj\Debug\LVQClientWithVisualization.pdb
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\bin\Debug\LVQLibrary.dll
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQClientWithVisualization\bin\Debug\LVQLibrary.pdb

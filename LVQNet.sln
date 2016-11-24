@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVQLibrary", "LVQLibrary\LVQLibrary.csproj", "{06B586C5-44AD-45E6-9DDC-5FFF8BD2782C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVQClient", "LVQClient\LVQClient.csproj", "{3F3F5056-F05C-472D-8A59-9F604E04574A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVQClientWithVisualization", "LVQClientWithVisualization\LVQClientWithVisualization.csproj", "{39D268D9-0F09-4424-92C1-4FBC184F4ACA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06B586C5-44AD-45E6-9DDC-5FFF8BD2782C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B586C5-44AD-45E6-9DDC-5FFF8BD2782C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B586C5-44AD-45E6-9DDC-5FFF8BD2782C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B586C5-44AD-45E6-9DDC-5FFF8BD2782C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F3F5056-F05C-472D-8A59-9F604E04574A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3F5056-F05C-472D-8A59-9F604E04574A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3F5056-F05C-472D-8A59-9F604E04574A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3F5056-F05C-472D-8A59-9F604E04574A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D268D9-0F09-4424-92C1-4FBC184F4ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D268D9-0F09-4424-92C1-4FBC184F4ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D268D9-0F09-4424-92C1-4FBC184F4ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D268D9-0F09-4424-92C1-4FBC184F4ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

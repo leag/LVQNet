@@ -1,0 +1,5 @@
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQLibrary\bin\Debug\LVQLibrary.dll
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQLibrary\bin\Debug\LVQLibrary.pdb
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQLibrary\obj\Debug\LVQLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQLibrary\obj\Debug\LVQLibrary.dll
+C:\Users\Mariusz\Documents\GitHub\LVQNet\LVQLibrary\obj\Debug\LVQLibrary.pdb
