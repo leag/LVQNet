@@ -13,173 +13,81 @@ using System.Drawing.Imaging;
 using LVQLibrary.Utils;
 using LVQClientWithVisualization.Model;
 using System.IO;
+using LVQClientWithVisualization.Utils;
 
 namespace LVQClientWithVisualization
 {
     public partial class Form1 : Form
     {
-        List<Dot> points = new List<Dot>();
-        List<Vector> data = new List<Vector>();
-        Graphics g;
-        Random rnd = new Random();
-        int height;
-        int width;
-        Image image;
-        LVQAlgorithm lvq;
+        List<Dot> _points = new List<Dot>();
+        List<Vector> _data = new List<Vector>();
+        double _alpha = 0.1;
+        Graphics _graphics;
+        Bitmap _bitmap;
+        LVQAlgorithm _lvq;
+        int _numOfCodeVectors = 20;
+        int _height = 500;
+        int _width = 500;
+        double _learningRate;
+
         public Form1()
         {
             InitializeComponent();
-            height = 500;
-            width = 500;
-            Bitmap bitmap = new Bitmap(height, width, PixelFormat.Format24bppRgb);
-            for (int i = 0; i < bitmap.Height; i++)
-            {
-                for (int j = 0; j < bitmap.Width; j++)
-                {
-                    bitmap.SetPixel(i, j, Color.FromArgb(255, 255, 255));
-                }
-            }
-
-            image = bitmap;
-            g = Graphics.FromImage(image);
-            pictureBox1.Image = image;
-
-            data = DataFileReader.GetDataFromFile("lol.txt");
-
-            lvq = new LVQAlgorithm();
-            lvq.trainingData = data;
-            lvq.testingData = data;
-            lvq.Initialize(20);
-
-            foreach (Vector vec in lvq._w)
-            {
-                drawBigDot(g, System.Convert.ToInt32(vec.x[0]), System.Convert.ToInt32(vec.x[1]), vec.C);
-            }
-
-            DrawData(g);
-        }
-
-        void drawDot(Graphics g, int x, int y)
-        {
-            int d = 2;
-            g.DrawEllipse(Pens.Red, new Rectangle(x - d / 2, y - d / 2, d, d));
-        }
-
-        void drawBigDot(Graphics g, int x, int y)
-        {
-            int d = 10;
-
-            for (int i = 0; i < d; i++)
-                g.DrawEllipse(Pens.Black, new Rectangle(x - i / 2, y - i / 2, i, i));
-        }
-
-        void drawBigDot(Graphics g, int x, int y, int c)
-        {
-            int d = 10;
-
-            if (c == 1)
-                for (int i = 0; i < d; i++)
-                    g.DrawEllipse(Pens.Red, new Rectangle(x - i / 2, y - i / 2, i, i));
-
-            if (c == 2)
-                for (int i = 0; i < d; i++)
-                    g.DrawEllipse(Pens.Green, new Rectangle(x - i / 2, y - i / 2, i, i));
-
-            if (c == 3)
-                for (int i = 0; i < d; i++)
-                    g.DrawEllipse(Pens.Blue, new Rectangle(x - i / 2, y - i / 2, i, i));
-
-            if (c == 4)
-                for (int i = 0; i < d; i++)
-                    g.DrawEllipse(Pens.Orange, new Rectangle(x - i / 2, y - i / 2, i, i));
-        }
-
-        void drawDot(Graphics g, int x, int y, int C)
-        {
-            int d = 4;
-            if (C == 1)
-                g.DrawEllipse(Pens.Red, new Rectangle(x - d / 2, y - d / 2, d, d));
-            if (C == 2)
-                g.DrawEllipse(Pens.Green, new Rectangle(x - d / 2, y - d / 2, d, d));
-            if (C == 3)
-                g.DrawEllipse(Pens.Blue, new Rectangle(x - d / 2, y - d / 2, d, d));
-            if (C == 4)
-                g.DrawEllipse(Pens.Orange, new Rectangle(x - d / 2, y - d / 2, d, d));
-        }
-
-        void DrawData(Graphics g, int C)
-        {
-            foreach (Dot p in points)
-                drawDot(g, p.x, p.y, C);
-        }
-
-        void DrawData(Graphics g)
-        {
-            foreach (Vector vec in data)
-            {
-                drawDot(g, (int)vec.x[0], (int)vec.x[1], vec.C);
-            }
-        }
-        void drawTriangle(Graphics g, int height, int width)
-        {
-            g.DrawLine(Pens.Black, width / 2, 50, width - 50, height - 50);
-            g.DrawLine(Pens.Black, width / 2, 50, 50, height - 50);
-            g.DrawLine(Pens.Black, 50, width - 50, width - 50, height - 50);
-        }
-
-        void GenerateData(int startX, int endX, int startY, int endY, int N, int c)
-        {
-            for (int i = 0; i < N; i++)
-            {
-                int a = rnd.Next(startX, endX);
-                int b = rnd.Next(startY, endY);
-                points.Add(new Dot { x = a, y = b });
-                data.Add(new Vector(new List<double> { a, b }) { C = c });
-            }
-
-
-        }
-
-        void SaveDataToFile(string fileName)
-        {
-            string text = "";
-            foreach (Vector v in data)
-                text += v.x[0] + " " + v.x[1] + " " + v.C + Environment.NewLine;
-            File.WriteAllText(fileName, text);
+            
+            _bitmap = Drawing.DrawBitmap(_height, _width);
+            _graphics = Graphics.FromImage(_bitmap);
+            pictureBox1.Image = _bitmap;
+            //string fileName = "lol.txt";
+            string fileName = "iris2D.txt";
+            _data = DataFileReader.GetDataFromFile(fileName);
+            DataStandarizator.NormalizeData(_data);
+            _lvq = new LVQAlgorithm();
+            _lvq.trainingData = _data;
+            _lvq.testingData = _data;
+            _lvq.Initialize(_numOfCodeVectors);
+            Drawing.DrawData(_graphics, _data, _width, _height);
+            Drawing.DrawCodeVectors(_graphics, _lvq._w);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lvq.LearnOneEpoch();
-            g.Clear(Color.White);
-            pictureBox1.Image = image;
-            foreach (Vector vec in lvq._w)
-            {
-                drawBigDot(g, System.Convert.ToInt32(vec.x[0]), System.Convert.ToInt32(vec.x[1]), vec.C);
-            }
-
-            DrawData(g);
+            _lvq.LearnOneEpoch(_learningRate);
+            double d = (double)_lvq.Test() / _lvq.trainingData.Count;
+            nud_accuracy.Value = System.Convert.ToInt32((100 * d));
+            _graphics.Clear(Color.White);
+            pictureBox1.Image = _bitmap;
+            Drawing.DrawCodeVectors(_graphics, _lvq._w);
+            Drawing.DrawData(_graphics, _data, _width, _height);
         }
 
         private void btn_start_Click(object sender, EventArgs e)
         {
+            //_numOfCodeVectors = System.Convert.ToInt32(nud_numOfCodeVectors.Value);
+            get_parameters();
             timer1.Start();
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            g.Clear(Color.White);
-            lvq = new LVQAlgorithm();
-            lvq.Initialize(20);
+            //_numOfCodeVectors = System.Convert.ToInt32(nud_numOfCodeVectors.Value);
+            get_parameters();
+            _graphics.Clear(Color.White);
+            _lvq = new LVQAlgorithm();
+            _lvq.trainingData = _data;
+            _lvq.testingData = _data;
+            _lvq.Initialize(_numOfCodeVectors);
 
-            foreach (Vector vec in lvq._w)
-            {
-                drawBigDot(g, System.Convert.ToInt32(vec.x[0]), System.Convert.ToInt32(vec.x[1]), vec.C);
-            }
+            Drawing.DrawCodeVectors(_graphics, _lvq._w);
 
-            DrawData(g);
-            pictureBox1.Image = image;
+            Drawing.DrawData(_graphics,_data, _width, _height);
+            pictureBox1.Image = _bitmap;
+        }
+
+        private void get_parameters()
+        {
+            _numOfCodeVectors = System.Convert.ToInt32(nud_numOfCodeVectors.Value);
+            _learningRate = System.Convert.ToDouble(nud_learningRate.Value);
         }
     }
 }

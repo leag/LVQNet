@@ -29,11 +29,11 @@ namespace LVQClient
             //string path = "vote.txt";
             //string path = "iris2D.txt";
             int N = 10; //k - fold
-            int M = 20; //liczba wektorów kodujących
+            int M = 1; //liczba wektorów kodujących
             List<List<Vector>> d = new List<List<Vector>>();
-            List<Vector> data = DataFileReader.GetDataFromFile(path);
-            List<Vector> tempData = data.ToList();
-            int b = data.Count() / N;
+            List<Vector> _data = DataFileReader.GetDataFromFile(path);
+            List<Vector> tempData = _data.ToList();
+            int b = _data.Count() / N;
             for (int i = 0; i < N; i++)
             {
                 d.Add(new List<Vector>());
@@ -48,19 +48,19 @@ namespace LVQClient
             int num = 0;
             for (int i = 0; i < N; i++)
             {
-                LVQAlgorithm lvq = new LVQAlgorithm();
-                lvq.trainingData = makeTrainingSet(d, i);
-                lvq.testingData = d[i];
-                lvq.Initialize(M);
-                lvq.Learn(100);
-                num += lvq.Test();
+                LVQAlgorithm _lvq = new LVQAlgorithm();
+                _lvq.trainingData = makeTrainingSet(d, i);
+                _lvq.testingData = d[i];
+                _lvq.Initialize(M);
+                _lvq.Learn(100);
+                num += _lvq.Test();
             }
             Console.WriteLine("Crossvalidation {0}-folds", N);
             Console.WriteLine("Number of Codebooks Vectors: {0}", M);
-            Console.WriteLine("Number of Instances : {0}", data.Count);
+            Console.WriteLine("Number of Instances : {0}", _data.Count);
             Console.WriteLine("Correctly Classified Instances : {0}", num);
-            Console.WriteLine("Incorrectly Classified Instances : {0}", data.Count - num);
-            Console.WriteLine("Accuracy: {0:F5}%", 100 * (double)num / data.Count);
+            Console.WriteLine("Incorrectly Classified Instances : {0}", _data.Count - num);
+            Console.WriteLine("Accuracy: {0:F5}%", 100 * (double)num / _data.Count);
             Console.ReadKey();
         }
     }

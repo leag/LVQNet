@@ -16,11 +16,14 @@ namespace LVQLibrary
         public void Initialize(int k)
         {
             _w = new List<Vector>();
-            List<Vector> data = trainingData;
+            List<Vector> _data = trainingData;
             for (int i = 0; i < k; i++)
             {
-                _w.Add(data[_random.Next(data.Count)]);
+                Vector vec = _data[_random.Next(_data.Count)];
+                _w.Add(new Vector() { C = vec.C, x = vec.x.ToArray() });
             }
+            var arr = _w.ToArray();
+            _w = arr.ToList(); ;
         }
         public void Learn(int k)
         {
@@ -30,7 +33,7 @@ namespace LVQLibrary
             for (int i = 0; i < k; i++)
             {
                 //alpha *= k - i;
-                alpha = alpha / (1 + alpha);
+                //alpha = alpha / (1 + alpha);
                 foreach (Vector teachVector in trainingData)
                 {
                     List<double> d = new List<double>();
@@ -97,14 +100,16 @@ namespace LVQLibrary
 
             return Math.Sqrt(s);
         }
-        public void LearnOneEpoch()
+        public void LearnOneEpoch(double alpha)
         {
 
-            double alpha = 0.001;
+            //double alpha = 0.001;
+            //double alpha = 0.01;
 
             //alpha *= k - i;
             foreach (Vector teachVector in trainingData)
             {
+                alpha = alpha / (1 + alpha);
                 List<double> d = new List<double>();
                 foreach (Vector w in _w)
                 {
